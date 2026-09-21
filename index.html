@@ -247,22 +247,180 @@
     .bottom { grid-template-columns:1fr; }
     .certs { text-align:center; }
   }
+
+  /* Mobile-first vertical ID-card design */
+  html, body {
+    width:100%;
+    min-height:100%;
+  }
+  body {
+    padding:12px;
+    background:#eef1f2;
+    overflow-x:hidden;
+  }
+  .toolbar {
+    width:100%;
+    max-width:430px;
+    margin:0 auto 10px;
+  }
+  .toolbar button {
+    width:100%;
+    min-height:46px;
+    font-size:15px;
+    border-radius:10px;
+  }
+  .toolbar button:not(.green) { display:none; }
+  .hint {
+    max-width:430px;
+    margin:0 auto 10px;
+    font-size:12px;
+    line-height:1.35;
+  }
+  .card,
+  .card.vertical {
+    width:min(100%, 430px);
+    min-height:0;
+    margin:0 auto;
+    border-radius:18px;
+    border:1px solid #d9dfe1;
+    box-shadow:0 8px 28px rgba(0,0,0,.14);
+    overflow:hidden;
+  }
+  .card {
+    display:block;
+  }
+  .card .top {
+    display:flex;
+    flex-direction:column;
+    text-align:center;
+    padding:22px 20px 18px;
+    min-height:0;
+    gap:0;
+  }
+  .vertical .top {
+    display:flex;
+    flex-direction:column;
+    text-align:center;
+    padding:22px 20px 18px;
+    min-height:0;
+  }
+  .vertical .brand {
+    order:-2;
+    margin:0 0 16px;
+  }
+  .vertical .brand img,
+  .brand img {
+    width:185px;
+    max-width:70%;
+  }
+  .vertical .person-box {
+    border:0;
+    border-bottom:1px solid #dfe4e5;
+    padding:0 0 16px;
+    width:100%;
+  }
+  .person-photo {
+    width:138px;
+    height:138px;
+    margin:0 auto 13px;
+    border-radius:12px;
+  }
+  .socials { gap:9px; }
+  .social {
+    width:26px;
+    height:26px;
+    border-radius:7px;
+  }
+  .vertical .details,
+  .details {
+    width:100%;
+    padding:15px 0 0;
+  }
+  .vertical .name,
+  .name {
+    font-size:clamp(25px, 7vw, 31px);
+    line-height:1.05;
+    margin:0 0 5px;
+    overflow-wrap:anywhere;
+  }
+  .vertical .role,
+  .role {
+    font-size:16px;
+    margin:0 0 14px;
+  }
+  .vertical .contact-row,
+  .contact-row {
+    justify-content:flex-start;
+    text-align:left;
+    gap:9px;
+    margin:8px 0;
+    font-size:14px;
+    min-width:0;
+  }
+  .contact-row > span:last-child {
+    overflow-wrap:anywhere;
+  }
+  .contact-icon {
+    width:30px;
+    height:30px;
+    font-size:15px;
+    border-radius:7px;
+  }
+  .divider {
+    margin:0 18px;
+  }
+  .vertical .bottom,
+  .bottom {
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    padding:18px 20px 20px;
+    align-items:stretch;
+  }
+  .office {
+    grid-template-columns:42px 1fr;
+    gap:10px;
+  }
+  .flag {
+    width:42px;
+    height:42px;
+  }
+  .office h3 { font-size:15px; }
+  .office strong, .office p { font-size:12px; }
+  .vertical .certs,
+  .certs { text-align:center; }
+  .vertical .certs img,
+  .certs img {
+    width:100%;
+    max-width:290px;
+    border-radius:8px;
+  }
+  .export-mode .card,
+  .export-mode .card.vertical {
+    width:430px;
+    max-width:none;
+    border-radius:0;
+  }
+  @media (max-width:380px) {
+    body { padding:8px; }
+    .vertical .top { padding:18px 15px 15px; }
+    .person-photo { width:122px; height:122px; }
+    .vertical .bottom { padding:16px 15px 18px; }
+  }
+
 </style>
 </head>
 <body>
 
 <div class="toolbar" id="toolbar">
   <button class="green" onclick="saveImage()">Save as Image</button>
-  <button onclick="setOrientation('horizontal')">Horizontal Card</button>
-  <button onclick="setOrientation('vertical')">Vertical Card</button>
-  <button class="gray" onclick="window.print()">Print</button>
 </div>
 
 <div class="hint">
-  Click any name, phone, email, website or office text to edit it. Then click <b>Save as Image</b>.
+  Tap any text to edit it, then tap <b>Save as Image</b>.
 </div>
 
-<div class="card" id="card">
+<div class="card vertical" id="card">
 
   <section class="top">
 
